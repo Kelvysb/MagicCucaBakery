@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicCucaBakery.DataAccess", "MagicCucaBakeryDataAccess\MagicCucaBakery.DataAccess.csproj", "{54A95E3E-6950-494B-861D-B349F1E79AC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicCucaBakery.Domain", "MagicCucaBakeryDomain\MagicCucaBakery.Domain.csproj", "{3A972B6F-9BFD-43F0-8FAD-7ACA8BDC30C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicCucaBakery.API", "MagicCucaBakeryAPI\MagicCucaBakery.API.csproj", "{04E2F1CC-CDA0-4673-8980-11062498E4FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{46108412-8EC5-4115-814E-655CCF714936}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicCucaBakery.Business", "MagicCucaBakeryBusiness\MagicCucaBakery.Business.csproj", "{8411E092-B0BD-47FB-AB56-B13B4EB80F68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54A95E3E-6950-494B-861D-B349F1E79AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54A95E3E-6950-494B-861D-B349F1E79AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54A95E3E-6950-494B-861D-B349F1E79AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54A95E3E-6950-494B-861D-B349F1E79AC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A972B6F-9BFD-43F0-8FAD-7ACA8BDC30C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A972B6F-9BFD-43F0-8FAD-7ACA8BDC30C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A972B6F-9BFD-43F0-8FAD-7ACA8BDC30C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A972B6F-9BFD-43F0-8FAD-7ACA8BDC30C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04E2F1CC-CDA0-4673-8980-11062498E4FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04E2F1CC-CDA0-4673-8980-11062498E4FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04E2F1CC-CDA0-4673-8980-11062498E4FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04E2F1CC-CDA0-4673-8980-11062498E4FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8411E092-B0BD-47FB-AB56-B13B4EB80F68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8411E092-B0BD-47FB-AB56-B13B4EB80F68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8411E092-B0BD-47FB-AB56-B13B4EB80F68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8411E092-B0BD-47FB-AB56-B13B4EB80F68}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8EB36680-5FF3-45DA-8BA9-C445F16D0D91}
+	EndGlobalSection
+EndGlobal

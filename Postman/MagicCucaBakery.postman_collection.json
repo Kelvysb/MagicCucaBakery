@@ -1,0 +1,690 @@
+{
+	"info": {
+		"_postman_id": "4372db4c-f7e3-4732-8e5d-735e386c29e9",
+		"name": "MagicCucaBakery",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0fe5470a-43ff-4e40-93de-f12ac51ec063",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"Token\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Login\": \"{{Login}}\",\n\t\"Password\": \"{{Password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{uri}}/Users/Login",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Users",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProducts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{uri}}/Products",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProductById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{uri}}/Products/1",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProductByName",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{uri}}/Products/name?name=chocolate",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Products",
+						"name"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "chocolate"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateProduct",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Cuca - Banana with white chocolate\",\r\n    \"description\": \"Classic cuca Banana with white chocolate, covered with sweet farofa\",\r\n    \"price\": 25,\r\n    \"weight\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{uri}}/Products",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateProduct",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Cuca - White Chocolate\",\r\n    \"description\": \"Cuca with white chocolate, covered with sweet farofa\",\r\n    \"price\": 20,\r\n    \"weight\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{uri}}/Products",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteProduct",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://{{uri}}/Products/7",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Products",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCustomers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{uri}}/Customers",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCustomerById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{uri}}/Customers/2",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Customers",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCustomerByName",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{uri}}/Customers/name?name=Customer",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Customers",
+						"name"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Customer"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateCustomer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"firstName\": \"Customer\",\r\n    \"lastName\": \"Default\",\r\n    \"phoneNumber\": \"0000000\",\r\n    \"email\": \"\",\r\n    \"address\": {\r\n        \"street\": null,\r\n        \"number\": null,\r\n        \"complement\": null,\r\n        \"neighborhood\": null,\r\n        \"postalCode\": null,\r\n        \"city\": null,\r\n        \"state\": null\r\n    },\r\n    \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{uri}}/Customers",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateCustomer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"phoneNumber\": \"+1 63 99999999\",\r\n    \"email\": \"jd@jd.com\",\r\n    \"address\": {\r\n        \"street\": \"Lost st\",\r\n        \"number\": \"63\",\r\n        \"complement\": \"Ap 2\",\r\n        \"neighborhood\": \"CosmoVille\",\r\n        \"postalCode\": \"000011\",\r\n        \"city\": \"Trasco\",\r\n        \"state\": \"AZ\"\r\n    },\r\n    \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{uri}}/Customers",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCustomer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"phoneNumber\": \"+1 63 99999999\",\r\n    \"email\": \"jd@jd.com\",\r\n    \"address\": {\r\n        \"street\": \"Lost st\",\r\n        \"number\": \"63\",\r\n        \"complement\": \"Ap 2\",\r\n        \"neighborhood\": \"CosmoVille\",\r\n        \"postalCode\": \"000011\",\r\n        \"city\": \"Trasco\",\r\n        \"state\": \"AZ\"\r\n    },\r\n    \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{uri}}/Customers/2",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Customers",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{uri}}/Orders",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrdersById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{uri}}/Orders/1",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Orders",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateOrder",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customer\": {\r\n    \"id\": 1\r\n  },\r\n  \"creationDate\": \"2020-02-17T20:49:09.532Z\",\r\n  \"deliveryDate\": \"2020-02-17T20:49:09.532Z\",\r\n  \"observation\": \"\",\r\n  \"status\": 1,\r\n  \"items\": [\r\n    {\r\n      \"productId\": 1,\r\n      \"quantity\": 1,\r\n      \"status\": 1\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{uri}}/Orders",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddOrder",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customer\": {\r\n    \"id\": 1\r\n  },\r\n  \"creationDate\": \"2020-02-17T20:49:09.532Z\",\r\n  \"deliveryDate\": \"2020-02-17T20:49:09.532Z\",\r\n  \"observation\": \"\",\r\n  \"status\": 1,\r\n  \"items\": [\r\n    {\r\n      \"productId\": 1,\r\n      \"quantity\": 1,\r\n      \"status\": 1\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{uri}}/Orders",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddItem",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": 1,\r\n    \"quantity\": 1,\r\n    \"observation\": \"Without onion\",\r\n    \"status\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{uri}}/Orders/1/Item",
+					"protocol": "http",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"Orders",
+						"1",
+						"Item"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
