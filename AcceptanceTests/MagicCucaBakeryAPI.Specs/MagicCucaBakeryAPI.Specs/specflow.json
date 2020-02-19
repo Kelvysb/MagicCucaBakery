@@ -1,0 +1,23 @@
+﻿{
+  "unitTestProvider": {
+    "name": "mstest"
+  },
+  "runtime": {
+    "detectAmbiguousMatches": true,
+    "stopAtFirstError": false,
+    "missingOrPendingStepsOutcome": "Inconclusive"
+  },
+  "stepAssemblies": [
+    {
+      "assembly": "MagicCucaBakeryAPI.Specs"
+    },
+    {
+      "assembly": "MagicCucaBakeryAPI.Automation"
+    }
+  ],
+  "trace": {
+    "traceSuccessfulSteps": true,
+    "traceTimings": false,
+    "minTracedDuration": "0:0:0.1"
+  }
+}
