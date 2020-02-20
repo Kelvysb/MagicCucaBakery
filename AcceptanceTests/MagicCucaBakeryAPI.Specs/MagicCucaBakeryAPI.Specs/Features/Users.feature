@@ -5,7 +5,6 @@
 Scenario Outline: Retrieve list of registered users
 	Given that I'm logged in the system, with following user:
 		| UserName | Password |
-		| Admin	   | Wrong    |
 		| Admin	   | Admin    |
 	When I request users from the users endpoint
 	Then the result should be success
