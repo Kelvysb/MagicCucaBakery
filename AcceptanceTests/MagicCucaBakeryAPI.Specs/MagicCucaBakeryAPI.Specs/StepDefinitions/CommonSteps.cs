@@ -13,16 +13,24 @@ namespace MagicCucaBakeryAPI.Specs.StepDefinitions
         protected readonly ServiceContext context = ServiceContext.GetInstance();
 
         [Given(@"that I'm logged in the system, with following user:")]
-        public void GivenThatImLoggedInTheSystem(Table user)
+        public void GivenThatImLoggedInTheSystem(Table users)
         {
             string userName;
             string password;
+            ApiResult result = null;
 
             if (string.IsNullOrEmpty(context.Token))
             {
-                user.Rows[0].TryGetValue("UserName", out userName);
-                user.Rows[0].TryGetValue("Password", out password);
-                ApiResult result = context.Service.Login(userName, password);
+                foreach (TableRow row in users.Rows)
+                {
+                    row.TryGetValue("UserName", out userName);
+                    row.TryGetValue("Password", out password);
+                    result = context.Service.Login(userName, password);
+                    if(result.ResultCode.Equals("Ok", System.StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        break;
+                    }
+                }
                 result.ResultCode.Should().BeEquivalentTo("Ok");
             }
         }
@@ -34,7 +42,7 @@ namespace MagicCucaBakeryAPI.Specs.StepDefinitions
         }
 
         [Then(@"the result should be (.*)")]
-        public void ThenTheResultShouldBeSuccess(string httpStatus)
+        public void ThenTheResultShouldBe(string httpStatus)
         {
             context.LastResult.Should().NotBeNull();
 
