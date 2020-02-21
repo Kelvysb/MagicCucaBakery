@@ -14,9 +14,17 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Image x:Name="Logo" Source="/Resources/MCB_Icon.png" Grid.Column="0" />
-        <Grid x:Name="Menu" Grid.Column="1">
-            <StackPanel Orientation="Horizontal">
-
+        <Grid x:Name="Menu" Grid.Column="1" Margin="5" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <local:MenuItem x:Name="BtnHome" Text="Home" Margin="10,0,10,0"></local:MenuItem>
+                <local:MenuItem x:Name="BtnOrders" Text="Orders" Margin="10,0,10,0"></local:MenuItem>
+                <local:MenuItem x:Name="BtnCustomers" Text="Customers" Margin="10,0,10,0"></local:MenuItem>
+                <local:MenuItem x:Name="BtnProducts" Text="Products" Margin="10,0,10,0"></local:MenuItem>
+                <local:MenuItem x:Name="BtnUsers" Text="Users" Margin="10,0,10,0"></local:MenuItem>
             </StackPanel>
         </Grid>
     </Grid>

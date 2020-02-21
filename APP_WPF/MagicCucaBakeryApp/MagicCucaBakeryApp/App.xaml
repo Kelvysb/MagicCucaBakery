@@ -6,9 +6,19 @@
     <Application.Resources>
         <SolidColorBrush x:Key="BackColor" Color="#fffcc4"/>
         <SolidColorBrush x:Key="DetailColor" Color="#55ff955c"/>
+        <SolidColorBrush x:Key="Unselected" Color="Transparent"/>
         <SolidColorBrush x:Key="FontColor" Color="#4d4d4d"/>
 
         <FontFamily x:Key="Font">Arial</FontFamily>
+
+        <Style x:Key="stlClickableGrid" TargetType="Grid">
+            <Setter Property="Background" Value="{StaticResource Unselected}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource DetailColor}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
         <Style x:Key="stlLabelBase" TargetType="Label">
             <Setter Property="FontFamily" Value="{StaticResource Font}"/>

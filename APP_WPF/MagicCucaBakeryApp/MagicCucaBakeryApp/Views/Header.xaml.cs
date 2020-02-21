@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace MagicCucaBakeryApp.Views
 {
@@ -11,5 +12,9 @@ namespace MagicCucaBakeryApp.Views
         {
             InitializeComponent();
         }
+
+        private static DependencyProperty menuTarget = DependencyProperty.Register("Folders", typeof(Grid), typeof(Header));
+
+        public DependencyProperty MenuTarget { get => menuTarget; set => menuTarget = value; }
     }
 }
