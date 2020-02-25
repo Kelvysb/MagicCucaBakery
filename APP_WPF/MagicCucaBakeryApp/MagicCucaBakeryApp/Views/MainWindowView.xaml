@@ -1,23 +1,26 @@
-﻿<Window x:Class="MagicCucaBakeryApp.Views.MainWindow"
+﻿<Window x:Class="MagicCucaBakeryApp.Views.MainWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:MagicCucaBakeryApp.Views"
+        xmlns:viewModels="clr-namespace:MagicCucaBakeryApp.ViewModels"
         mc:Ignorable="d"
         Background="{StaticResource BackColor}"
         Title="Magic Cuca Bakery" Height="450" Width="800" Icon="/Resources/favicon.ico">
+    <Window.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
         </Grid.RowDefinitions>
         <Image x:Name="BackgroundImage" Source="/Resources/MCB.png" Grid.RowSpan="3" Opacity="0.1" Margin="25" />
-        <views:Header MenuTarget="{Binding TargetGrid}" Grid.Row="0"/>
+        <views:HeaderView Grid.Row="0" />
         <Grid x:Name="Body" Grid.Row="1">
-            
         </Grid>
-        <views:Footer Grid.Row="2" />
+        <views:FooterView Grid.Row="2" />
     </Grid>
 </Window>
