@@ -13,7 +13,7 @@
 
 ## Responsabilities
 
-![MVVMResponsabilities](./MVVMResponsabilities.png)
+![MVVMResponsabilities](./MVVM.svg)
 
 
 ### Model:
@@ -319,9 +319,9 @@ Example:
         }
     ```
 
-extra:
+Extra:
 
-[snippets for Notified properties](../../Utils/)
+[snippets for notified properties](../../Utils/)
 
 
 ## References
