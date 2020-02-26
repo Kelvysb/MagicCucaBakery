@@ -1,6 +1,6 @@
 # WPF - MVVM
 
-##Separation of concerns
+## Separation of concerns
 
 * **Views**
     * UI Elements Access
@@ -11,12 +11,12 @@
 * **Services** (optional)
     * Shared Client Logic
 
-##Responsabilities
+## Responsabilities
 
 ![MVVMResponsabilities](./MVVMResponsabilities.png)
 
 
-###Model:
+### Model:
 
 * Contains client data.
 * Expose relationships between model objects.
@@ -24,13 +24,13 @@
 * Raise change notifications.
     * `INotifyPropertyChanged.PropertyChanged`
 
-###View
+### View
 
 * Structural definitions of what user sees on the screen.
 * Minimal code behind.
 * Preferred **No code behind**.
 
-###View Model
+### View Model
 
 * Expose data to the view.
 * Encapsulate interaction logic.
@@ -48,7 +48,7 @@
     * Client environment.
 * Can act as data caching container.
 
-##Fundamental equation of MVVM
+## Fundamental equation of MVVM
 
 `View.DataContext = ViewModel`
 
@@ -116,9 +116,9 @@
     * Other control construct both View and ViewModel.
     * After the creation set the DataContext.
 
-##Interaction
+## Interaction
 
-###Comands
+### Comands
 
 * Command design pattern.
     * Invoker - View control.
@@ -209,6 +209,6 @@
     ```
 
 
-##References
+## References
 [Patterns - WPF Apps With The Model-View-ViewModel Design Pattern](https://docs.microsoft.com/en-us/archive/msdn-magazine/2009/february/patterns-wpf-apps-with-the-model-view-viewmodel-design-pattern)
 

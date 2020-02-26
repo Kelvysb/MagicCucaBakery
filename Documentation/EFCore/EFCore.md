@@ -1,19 +1,19 @@
-#EF Core
+# EF Core
 
-##New Features on 2.1
+## New Features on 2.1
 
-###EF6
+### EF6
 * Lazy loading 
 * GroupBy Translation
 * Data seeding
 * System.Transaction
 
-###New
+### New
 * Change tracking events
 * Query Types
 * Values Conversions
 
-##Seeding
+## Seeding
 
 * Migration
 ```PS1
@@ -64,7 +64,7 @@ modelBuilder.Entity<BrewerType>().HasData(
     - Migrate() Creates or Migrates a database
     - Execute migrations
 
-##Transactions
+## Transactions
 
 * TransactionScope, CommitableTransaction
 * SQL Server, SQLCE, and PoestgerSQL Supported
@@ -142,7 +142,7 @@ using (var scope = new TransactionScope(TransactionScopeOption.Required,
 }
 ```
 
-##Events
+## Events
 
 * Change Tracker
     - Tracked - First time an object is tracked
@@ -171,11 +171,11 @@ private void Tracked(object sender, EntityTrackedEventArgs e)
 }
 ```
 
-##Lazy Loading
+## Lazy Loading
 
 Lazy loading needs to be explicitly set, it will not start by default. 
 
-###Proxies
+### Proxies
 
 * NuGet package: ``Microsof.EntityFramework.Proxies``
 * **Mark all navigation properties with virtual**.
@@ -184,7 +184,7 @@ Lazy loading needs to be explicitly set, it will not start by default.
     - ``context.ChangeTracker.LazyLoadingEnabled=true``
 * doesn't work in UWP, Xamarin, and Web
 
-###No Proxies
+### No Proxies
 
 * Dependency injection
 * Package: ``Microsoft.EntityFrameworkCore.Abstractions``
@@ -217,11 +217,11 @@ Lazy loading needs to be explicitly set, it will not start by default.
     }
     ```
 
-##Value Converters
+## Value Converters
 
 **The values converter do not replace the mappings**.
 
-###Using built-in converters
+### Using built-in converters
 
 ``using Microsoft.EntityFrameworkCore.Storage.ValueConversion;``
 
@@ -267,7 +267,7 @@ public class ColorValueConverter : ValueConverter<Color, String>
 modelBuilder.Entity<BrewerType>().Property(b => b.Color).HasConversion(new ColorValueConverter());
 ```
 
-##GroupBy
+## GroupBy
 
 * Simple key GroupBy
 ```C#
@@ -315,7 +315,7 @@ context.Units
 }).ToList();
 ```
 
-##References
+## References
 
 [Entity Framework Documentation](https://docs.microsoft.com/en-us/ef/#pivot=efcore)
 
