@@ -4,19 +4,84 @@ namespace MagicCucaBakeryApp.Models
 {
     public class Customer : INotifyPropertyChanged
     {
-        public int Id { get; set; }
+        private int id;
+        public int Id
+        {
+            get => id;
+            set
+            {
+                id = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Id"));
+            }
+        }
 
-        public string FirstName { get; set; }
+        private string firstName;
+        public string FirstName
+        {
+            get => firstName;
+            set
+            {
+                firstName = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("FirstName"));
+            }
+        }
 
-        public string LastName { get; set; }
+        private string lastName;
+        public string LastName
+        {
+            get => lastName;
+            set
+            {
+                lastName = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("LastName"));
+            }
+        }
 
-        public string PhoneNumber { get; set; }
 
-        public string Email { get; set; }
+        private string phoneNumber;
+        public string PhoneNumber
+        {
+            get => phoneNumber;
+            set
+            {
+                phoneNumber = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("PhoneNumber"));
+            }
+        }
 
-        public CustomerAddress Address { get; set; }
 
-        public bool Active { get; set; }
+        private string email;
+        public string Email
+        {
+            get => email;
+            set
+            {
+                email = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Email"));
+            }
+        }
+
+        private string address;
+        public string Address
+        {
+            get => address;
+            set
+            {
+                address = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Address"));
+            }
+        }
+
+        private bool active;
+        public bool Active
+        {
+            get => active;
+            set
+            {
+                active = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Active"));
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

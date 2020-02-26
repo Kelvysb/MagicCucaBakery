@@ -4,13 +4,55 @@ namespace MagicCucaBakeryApp.Models
 {
     public class User : INotifyPropertyChanged
     {
-        public int Id { get; set; }
 
-        public string Name { get; set; }
 
-        public string Login { get; set; }
+        private int id;
+        public int Id
+        {
+            get => id;
+            set
+            {
+                id = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Id"));
+            }
+        }
 
-        public string Email { get; set; }
+        private string name;
+        public string Name
+        {
+            get => name;
+            set
+            {
+                name = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Name"));
+            }
+        }
+
+
+        private string login;
+        public string Login
+        {
+            get => login;
+            set
+            {
+                login = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Login"));
+            }
+        }
+
+
+
+        private string email;
+        public string Email
+        {
+            get => email;
+            set
+            {
+                email = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Email"));
+            }
+        }
+
 
         public bool PasswordChange { get; set; }
 

@@ -208,7 +208,123 @@
     </UserControl.InputBindings>
     ```
 
+## Behaviors (Using Blend SDK)
+
+* In Blend
+    1. Go to the View.
+    2. Click Assets.
+    3. Click on Behaviors.
+    4. Select the view on 'Objects and Timeline'.
+    5. Double click on 'CallMethodAction' behavior.
+    6. Go back to Visual Studio.
+* In visual Studio
+    1. Following code are generated on Xaml:
+        ```xml
+        <i:Interactions.Triggers>
+            <i:EventTrigger EventName="MouseLeftButtonDown">
+                <ei:CallMethodAction />
+            </i:EventTrigger>
+        </i:Interactions.Triggers>
+        ```
+    2. Change the name for the desired event:
+        ```xml
+        <i:Interactions.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <ei:CallMethodAction />
+            </i:EventTrigger>
+        </i:Interactions.Triggers>
+        ```
+    3. Add the ViewModel binding and the method name
+        ```xml
+        <i:Interactions.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <ei:CallMethodAction TargetObject="{Binding}" MethodName="OnLoaded"/>
+            </i:EventTrigger>
+        </i:Interactions.Triggers>
+        ```
+    3. On ViewModel create the method
+        ```C#
+        public async void OnLoaded()
+        {
+            ...
+        }
+        ```
+
+## Properties change notifications
+
+Options
+
+* Use DependencyProperties
+    * Not recommended, it's verbose and requires that the object inherits from DependencyObject.
+* Implement INotifyPropertyChanged
+    * And Invoke the notify event on the Set of the properties.
+
+Example:
+* On View Model
+    ```C#
+        public class CustomViewModel : INotifyPropertyChanged
+        {
+            private ObservableCollection<Orders> orders;
+            public event PropertyChangedEventHandler PropertyChanged = delegate { };
+            
+            ...
+
+            public ObservableCollection<Orders> Orders
+            {
+                get
+                {
+                    return orders;
+                }
+                set
+                {                    
+                    if (orders != value)
+                    {
+                        orders = value;
+                        PropertyChanged(this, new PropertyChangedEventArgs("Orders"))
+                    }
+                }
+            }            
+        }
+    ```
+
+* On Models
+    ```C#
+        public class Order : INotifyPropertyChanged
+        {
+            private string customer;
+
+            ...
+
+            public event PropertyChangedEventHandler PropertyChanged = delegate { };                        
+            ...
+
+            public string Customer
+            {
+                get
+                {
+                    return customer;
+                }
+                set
+                {                    
+                    if (customer != value)
+                    {
+                        customer = value;
+                        PropertyChanged(this, new PropertyChangedEventArgs("Customer"))
+                    }
+                }
+            }
+
+            ...
+                  
+        }
+    ```
+
+extra:
+
+[snippets for Notified properties](../../Utils/)
+
 
 ## References
+[Introduction to WPF in Visual Studio](https://docs.microsoft.com/en-us/dotnet/framework/wpf/getting-started/introduction-to-wpf-in-vs)
 [Patterns - WPF Apps With The Model-View-ViewModel Design Pattern](https://docs.microsoft.com/en-us/archive/msdn-magazine/2009/february/patterns-wpf-apps-with-the-model-view-viewmodel-design-pattern)
 

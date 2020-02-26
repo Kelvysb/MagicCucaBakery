@@ -5,9 +5,6 @@ namespace MagicCucaBakeryApp.Models
     internal class LocalConfiguration : INotifyPropertyChanged
     {
         private string apiUri;
-        private string token;
-        private string userName;
-
         public string ApiUri
         {
             get => apiUri;
@@ -18,6 +15,7 @@ namespace MagicCucaBakeryApp.Models
             }
         }
 
+        private string token;
         public string Token
         {
             get => token;
@@ -28,6 +26,7 @@ namespace MagicCucaBakeryApp.Models
             }
         }
 
+        private string userName;
         public string UserName
         {
             get => userName;

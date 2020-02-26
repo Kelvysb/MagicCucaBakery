@@ -1,0 +1,8 @@
+{	
+	"Notified Property": {
+		"scope": "csharp",
+		"prefix": "nprop",
+		"body": ["private ${1:string} ${2:prop};\npublic ${1:string} ${3:prop}\n{\n\tget => ${2:prop};\n\tset\n\t\t{\n\t\t\t${2:prop} = value;\n\t\t\tPropertyChanged(this, new PropertyChangedEventArgs(\"${3:prop}\"));\n\t}\n}\n"],
+		"description": "Create an property that calls the PropertyChanged event of INotifyPropertyChanged"
+	}
+}
