@@ -16,7 +16,7 @@
 ![MVVMResponsabilities](./MVVMResponsabilities.png)
 
 
-###model:
+###Model:
 
 * Contains client data.
 * Expose relationships between model objects.
@@ -114,7 +114,7 @@
 
 * No One's First
     * Other control construct both View and ViewModel.
-    * After the creation set the DataContext binding both.
+    * After the creation set the DataContext.
 
 ##Interaction
 
@@ -207,4 +207,8 @@
         <KeyBinding Key="S" Modifiers="Control" Command="{Binding OkCommand}" />
     </UserControl.InputBindings>
     ```
+
+
+##References
+[Patterns - WPF Apps With The Model-View-ViewModel Design Pattern](https://docs.microsoft.com/en-us/archive/msdn-magazine/2009/february/patterns-wpf-apps-with-the-model-view-viewmodel-design-pattern)
 

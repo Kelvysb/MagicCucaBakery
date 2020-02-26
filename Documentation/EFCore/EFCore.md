@@ -315,9 +315,9 @@ context.Units
 }).ToList();
 ```
 
-##Query Types
+##References
 
-0
+[Entity Framework Documentation](https://docs.microsoft.com/en-us/ef/#pivot=efcore)
 
 
 
