@@ -4,8 +4,9 @@ namespace MagicCucaBakeryApp.Services
 {
     internal class AuthService
     {
-        public bool Login(Login login)
+        public bool Login(LoginMessage login)
         {
+            return true;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using MagicCucaBakeryApp.Models;
+﻿using MagicCucaBakeryApp.Models.Configuration;
 using Microsoft.Extensions.Configuration;
 using System.ComponentModel;
 using System.IO;

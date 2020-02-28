@@ -54,5 +54,20 @@ namespace MagicCucaBakeryApp.Services
                 return await response.Content.ReadAsStringAsync();
             }
         }
+
+        public async Task<string> Delete(string endpoint)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(ConfigurationService.Instance.Configuration.ApiUri);
+                if (!string.IsNullOrEmpty(ConfigurationService.Instance.Configuration.Token))
+                {
+                    client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", ConfigurationService.Instance.Configuration.Token);
+                }
+                HttpResponseMessage response = await client.DeleteAsync(endpoint);
+                return await response.Content.ReadAsStringAsync();
+            }
+        }
     }
 }

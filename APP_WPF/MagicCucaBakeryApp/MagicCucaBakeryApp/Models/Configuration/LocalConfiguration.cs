@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace MagicCucaBakeryApp.Models
+namespace MagicCucaBakeryApp.Models.Configuration
 {
     internal class LocalConfiguration : INotifyPropertyChanged
     {
@@ -37,6 +37,17 @@ namespace MagicCucaBakeryApp.Models
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        private Endpoints endpoints;
+        public Endpoints Endpoints
+        {
+            get => endpoints;
+            set
+                {
+                    endpoints = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("Endpoints"));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate {};
     }
 }

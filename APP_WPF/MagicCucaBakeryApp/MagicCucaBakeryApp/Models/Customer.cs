@@ -83,6 +83,6 @@ namespace MagicCucaBakeryApp.Models
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged = delegate {};
     }
 }
