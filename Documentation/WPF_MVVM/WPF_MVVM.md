@@ -52,7 +52,7 @@
 
 `View.DataContext = ViewModel`
 
-* View-Fist
+* View-First
     * View constructed first
     * ViewModel gets constructed and attached to DataContext via View.
     * Example:
@@ -75,7 +75,7 @@
             </DataTemplate>
         </UserControl.Resources>
         ...
-        <ContentControl Content="{Binding CurrentViewModel}" />
+        <ContentControl Content="{Binding CustomViewModel}" />
         ```
         and on parent ViewModel
         ```c#
@@ -157,10 +157,12 @@
 
     And On Implementation of ICommand
     ```C#
-    public class CustomCommand : ICommand
+     public class CustomCommand : ICommand
     {
-        Action targetExecuteMethod;
-        Func<bool> targetCanExecuteMethod;
+        private Action targetExecuteMethod;
+        private Func<bool> targetCanExecuteMethod;
+
+        public event EventHandler CanExecuteChanged;
 
         public CustomCommand(Action executeMethod)
         {
@@ -178,7 +180,7 @@
             CanExecuteChanged(this, EventArgs.Empty);
         }
 
-        bool ICommand.CanExecute()
+        public bool CanExecute(object parameter)
         {
             if (targetCanExecuteMethod != null)
             {
@@ -188,17 +190,14 @@
             {
                 return true;
             }
-            return false;            
+            return false;
         }
 
-        void ICommand.Execute()
+        public void Execute(object parameter)
         {
-            if (targetExecuteMethod != null)
-            {
-                targetExecuteMethod();
-            }          
+            targetExecuteMethod?.Invoke();
         }
-    }    
+    }
     ```
 
 * **Example key binding**:

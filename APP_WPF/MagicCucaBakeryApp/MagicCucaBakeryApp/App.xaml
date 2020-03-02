@@ -2,22 +2,52 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:MagicCucaBakeryApp"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              StartupUri="Views/MainWindowView.xaml">
     <Application.Resources>
+        <sys:Double x:Key="MenuIconSize">15</sys:Double>
+
+        <sys:Double x:Key="CollapsedMenuWidth">50</sys:Double>
+        <sys:Double x:Key="ExpandedMenuWidth">180</sys:Double>
+
         <SolidColorBrush x:Key="BackColor" Color="#fffcc4" />
-        <SolidColorBrush x:Key="DetailColor" Color="#55ff955c" />
+        <SolidColorBrush x:Key="DetailColor" Color="#ff9900" />
+        <SolidColorBrush x:Key="TitleColor" Color="#ff9900" />
         <SolidColorBrush x:Key="Unselected" Color="Transparent" />
         <SolidColorBrush x:Key="FontColor" Color="#4d4d4d" />
+        <SolidColorBrush x:Key="FontLigthColor" Color="#ffffff" />
+        <SolidColorBrush x:Key="SelectedColor" Color="#ffcc80" />
+
+        <LinearGradientBrush x:Key="DetailColorGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#ff9900" Offset="0" />
+            <GradientStop Color="#b36b00" Offset="1.0" />
+        </LinearGradientBrush>
 
         <FontFamily x:Key="Font">Arial</FontFamily>
 
-        <Style x:Key="stlClickableGrid" TargetType="Grid">
+        <Style x:Key="stlClickableMenuGrid" TargetType="Grid">
             <Setter Property="Background" Value="{StaticResource Unselected}" />
+            <Setter Property="Width" Value="{StaticResource ExpandedMenuWidth}" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{StaticResource DetailColor}" />
+                    <Setter Property="Background" Value="{StaticResource SelectedColor}" />
                 </Trigger>
             </Style.Triggers>
+        </Style>
+
+        <Style x:Key="stlMenuIcon" TargetType="Image">
+            <Setter Property="Height" Value="{StaticResource MenuIconSize}" />
+            <Setter Property="Stretch" Value="Uniform" />
+        </Style>
+
+        <Style x:Key="stlMenuText" TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource Font}" />
+            <Setter Property="Foreground" Value="{StaticResource FontLigthColor}" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="5,0,0,0" />
         </Style>
 
         <Style x:Key="stlLabelBase" TargetType="Label">
@@ -77,6 +107,96 @@
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="FontSize" Value="12" />
             <Setter Property="Background" Value="White" />
+        </Style>
+
+        <Style x:Key="stlButton" TargetType="Button">
+            <Setter Property="Button.Background" Value="Transparent" />
+            <Setter Property="Button.FontFamily" Value="{StaticResource Font}" />
+            <Setter Property="Button.Foreground" Value="{StaticResource FontColor}" />
+            <Setter Property="Button.FontWeight" Value="Bold" />
+            <Setter Property="Button.VerticalAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="stlCollapseImageCommand" TargetType="{x:Type Image}">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="12" />
+            <Setter Property="RenderTransformOrigin" Value="0.5 0.5" />
+            <Setter Property="Height" Value="15" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <RotateTransform />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding MenuCollapsed}" Value="True">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="RenderTransform.Angle">
+                                <DoubleAnimation
+                                            From="0" To="180" Duration="0:0:0.5"
+                                            AutoReverse="False"
+                                            FillBehavior="HoldEnd" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="RenderTransform.Angle">
+                                <DoubleAnimation
+                                            From="180" To="0" Duration="0:0:0.5"
+                                            AutoReverse="False"
+                                            FillBehavior="HoldEnd" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="stlCollapsebleMenu" TargetType="{x:Type UserControl}">
+            <Setter Property="RenderTransformOrigin" Value="0 0" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding MenuCollapsed}" Value="True">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="Width">
+                                <DoubleAnimation
+                                            From="{StaticResource ExpandedMenuWidth}"
+                                            To="{StaticResource CollapsedMenuWidth}"
+                                            Duration="0:0:0.5"
+                                            AutoReverse="False"
+                                            FillBehavior="HoldEnd" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="Width">
+                                <DoubleAnimation
+                                            From="{StaticResource CollapsedMenuWidth}"
+                                            To="{StaticResource ExpandedMenuWidth}"
+                                            Duration="0:0:0.5"
+                                            AutoReverse="False"
+                                            FillBehavior="HoldEnd" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
     </Application.Resources>
 </Application>

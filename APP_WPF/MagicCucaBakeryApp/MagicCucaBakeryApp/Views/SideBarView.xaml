@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="MagicCucaBakeryApp.Views.SideBarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MagicCucaBakeryApp.ViewModels"
+             Width="180" mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="180"
+             Style="{StaticResource stlCollapsebleMenu}"
+             x:Name="MenuBase">
+    <UserControl.DataContext>
+        <local:SideBarViewModel />
+    </UserControl.DataContext>
+    <Grid Background="{StaticResource DetailColorGradient}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="TitleBar" Grid.Row="0" Background="{StaticResource TitleColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image x:Name="Icon" Source="/MagicCucaBakeryApp;component/Resources/MCB_Icon.png" Grid.Column="0" />
+            <Label x:Name="Title" Content="Magic Cuca Bakery" Style="{StaticResource stlLabelBase}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" />
+        </Grid>
+        <Grid x:Name="Menu" Grid.Row="1" Margin="8,0,0,0">
+            <StackPanel Orientation="Vertical" Margin="2">
+                <Button Style="{StaticResource stlButton}" Command="{Binding HomeCommand}" Margin="0,5,0,0">
+                    <Grid Style="{StaticResource stlClickableMenuGrid}" HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Resources/Home.png" Style="{StaticResource stlMenuIcon}" Grid.Column="0" />
+                        <Label Content="Home" Style="{StaticResource stlMenuText}" Grid.Column="1" />
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource stlButton}" Command="{Binding OrdersCommand}" Margin="0,5,0,0">
+                    <Grid Style="{StaticResource stlClickableMenuGrid}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Resources/Orders.png" Style="{StaticResource stlMenuIcon}" Grid.Column="0" />
+                        <Label Content="Orders" Style="{StaticResource stlMenuText}" Grid.Column="1" />
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource stlButton}" Command="{Binding ProductsCommand}" Margin="0,5,0,0">
+                    <Grid Style="{StaticResource stlClickableMenuGrid}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Resources/Products.png" Style="{StaticResource stlMenuIcon}" Grid.Column="0" />
+                        <Label Content="Products" Style="{StaticResource stlMenuText}" Grid.Column="1" />
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource stlButton}" Command="{Binding CustomersCommand}" Margin="0,5,0,0">
+                    <Grid x:Name="MenuCustomers" Style="{StaticResource stlClickableMenuGrid}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Resources/Users.png" Style="{StaticResource stlMenuIcon}" Grid.Column="0" />
+                        <Label Content="Customers" Style="{StaticResource stlMenuText}" Grid.Column="1" />
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource stlButton}" Command="{Binding SettingsCommand}" Margin="0,5,0,0">
+                    <Grid x:Name="MenuConfig"  Style="{StaticResource stlClickableMenuGrid}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Resources/Config.png" Style="{StaticResource stlMenuIcon}" Grid.Column="0" />
+                        <Label Content="Settings" Style="{StaticResource stlMenuText}" Grid.Column="1" />
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Command="{Binding CollapseMenuCommand}" Style="{StaticResource stlButton}">
+                <Image x:Name="CollapseImage" Source="/Resources/Arrow.png" Margin="5" Style="{StaticResource stlCollapseImageCommand}" />
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
