@@ -9,9 +9,18 @@
 
   <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="Resources\Arrow.png" />
+    <None Remove="Resources\Cancel.png" />
+    <None Remove="Resources\Config.png" />
     <None Remove="Resources\favicon.ico" />
+    <None Remove="Resources\Home.png" />
     <None Remove="Resources\MCB.png" />
     <None Remove="Resources\MCB_Icon.png" />
+    <None Remove="Resources\Minus.png" />
+    <None Remove="Resources\Orders.png" />
+    <None Remove="Resources\Plus.png" />
+    <None Remove="Resources\Products.png" />
+    <None Remove="Resources\Users.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,11 +33,20 @@
     <Resource Include="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Arrow.png" />
+    <Resource Include="Resources\Cancel.png" />
+    <Resource Include="Resources\Config.png" />
     <Resource Include="Resources\favicon.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Home.png" />
     <Resource Include="Resources\MCB.png" />
     <Resource Include="Resources\MCB_Icon.png" />
+    <Resource Include="Resources\Minus.png" />
+    <Resource Include="Resources\Orders.png" />
+    <Resource Include="Resources\Plus.png" />
+    <Resource Include="Resources\Products.png" />
+    <Resource Include="Resources\Users.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,9 +63,4 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-  </ItemGroup>
-
 </Project>

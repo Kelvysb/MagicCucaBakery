@@ -8,19 +8,19 @@
         mc:Ignorable="d"
         Background="{StaticResource BackColor}"
         Title="Magic Cuca Bakery" Height="450" Width="800" Icon="/Resources/favicon.ico">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModels:SideBarViewModel}">
+            <views:SideBarView />
+        </DataTemplate>
+    </Window.Resources>
     <Window.DataContext>
         <viewModels:MainWindowViewModel />
     </Window.DataContext>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="20" />
-        </Grid.RowDefinitions>
-        <Image x:Name="BackgroundImage" Source="/Resources/MCB.png" Grid.RowSpan="3" Opacity="0.1" Margin="25" />
-        <views:HeaderView Grid.Row="0" />
-        <Grid x:Name="Body" Grid.Row="1">
-        </Grid>
-        <views:FooterView Grid.Row="2" />
+        <Image x:Name="BackgroundImage" Source="/Resources/MCB.png" Opacity="0.1" Margin="25" />
+        <StackPanel Orientation="Horizontal">
+            <ContentControl x:Name="SideBar" Content="{Binding SideBarViewModel}" />
+            <ContentControl x:Name="Body" />
+        </StackPanel>
     </Grid>
 </Window>

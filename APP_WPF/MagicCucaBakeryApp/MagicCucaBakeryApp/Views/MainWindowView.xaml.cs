@@ -11,5 +11,10 @@ namespace MagicCucaBakeryApp.Views
         {
             InitializeComponent();
         }
+
+        private void SideBarView_Loaded()
+        {
+
+        }
     }
 }
